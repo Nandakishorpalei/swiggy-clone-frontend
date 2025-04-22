@@ -12,6 +12,7 @@ import { updateCartItems, updateRestaurant } from "../../store/slices/Cart";
 import { Button } from "../../UI-Components/Button/Button";
 import { setShowLoginModal } from "../../store/slices/Auth";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import useAuth from "../../Hooks/useAuth";
 
 export const RestaurantNavbar = ({ title }: { title: string }) => {
   const { user, isAuthenticated } = useSelector(
@@ -23,6 +24,7 @@ export const RestaurantNavbar = ({ title }: { title: string }) => {
     skip: !isAuthenticated,
   });
   const dispatch = useDispatch();
+  const { logout } = useAuth();
 
   const isHelpActive = location.pathname.includes("/help");
   const isProfileActive = location.pathname.includes("/profile");
@@ -105,6 +107,15 @@ export const RestaurantNavbar = ({ title }: { title: string }) => {
               </span>
             )}
             <span>Cart</span>
+          </div>
+        )}
+        {user?.name && (
+          <div
+            className="flex items-center gap-1 cursor-pointer"
+            onClick={logout}
+          >
+            <PersonOutlineOutlinedIcon />
+            <span>Sign out</span>
           </div>
         )}
       </div>
