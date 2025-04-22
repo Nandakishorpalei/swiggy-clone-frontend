@@ -1,4 +1,14 @@
+# Node modules
 /node_modules
-dist
-.parcel-cache
-.env
+
+# Build output
+/dist
+
+# Parcel cache
+/.parcel-cache
+
+# Environment variables
+/.env
+
+# Cache files (specific to your case)
+**/.cache/

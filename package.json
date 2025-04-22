@@ -1,7 +1,7 @@
 {
-  "name": "car-detailing-frontend",
+  "name": "swiggy-clone-frontend",
   "version": "1.0.0",
-  "description": "car detailing react",
+  "description": "swiggy clone react",
   "scripts": {
     "start": "parcel index.html --port 3000",
     "build": "parcel build index.html --dist-dir dist",
