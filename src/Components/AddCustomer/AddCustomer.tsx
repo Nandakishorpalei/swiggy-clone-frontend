@@ -55,7 +55,6 @@ export const AddCustomer = ({ onClose }: { onClose: () => void }) => {
 
       setUser(confirmation);
     } catch (error: any) {
-      console.log({ error });
       alertToast({ message: error.message || "Something went wrong!" });
     }
     setLoading(false);
@@ -64,7 +63,6 @@ export const AddCustomer = ({ onClose }: { onClose: () => void }) => {
   const verifyOTP = async (values: FormikValues) => {
     try {
       setLoading(true);
-      console.log({ user });
       const result = user?.confirm(values.otp);
       setShowAllFields(false);
       const phoneNumber = "+" + "91" + values.phone;

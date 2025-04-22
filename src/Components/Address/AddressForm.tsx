@@ -64,7 +64,6 @@ export const AddressForm = ({ close }: { close: () => void }) => {
                 setMapCenter({ lat: latitude, lng: longitude });
               },
               (error) => {
-                console.error("Location error:", error);
                 alert(
                   "Unable to access location. Please allow location access in your browser."
                 );
@@ -96,8 +95,8 @@ export const AddressForm = ({ close }: { close: () => void }) => {
       try {
         const formattedAddress = await reverseGeocode(coords);
         setFieldValue("address", formattedAddress);
-      } catch (err) {
-        console.error(err);
+      } catch (error: any) {
+        alertToast({ message: error.message || "Something went wrong!" });
       }
     }
   };
@@ -113,7 +112,6 @@ export const AddressForm = ({ close }: { close: () => void }) => {
       }).unwrap();
       successToast({ message: "Address added successfully!" });
     } catch (error: any) {
-      console.log({ error });
       alertToast({ message: error.message || "Something went wrong!" });
     } finally {
       close();

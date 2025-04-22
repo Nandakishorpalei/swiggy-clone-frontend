@@ -26,8 +26,6 @@ export const RestaurantDishes = () => {
   );
   const itemCount = Object.keys(cartItems).length;
 
-  console.log({ itemCount, cartItems });
-
   const handleChange = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   });
@@ -36,7 +34,7 @@ export const RestaurantDishes = () => {
 
   return (
     <div className="w-full h-screen bg-surface">
-      <RestaurantNavbar title={`Restaurants in`} />
+      <RestaurantNavbar title="Restaurants" />
       <Async.Root
         isLoading={isLoading}
         isSuccess={isSuccess}

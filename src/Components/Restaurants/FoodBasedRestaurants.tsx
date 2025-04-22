@@ -13,7 +13,6 @@ export const FoodBasedRestaurants = () => {
   const { foodname = "" } = useParams<{ foodname: string }>();
   const { data, isLoading, isSuccess, isError } =
     useGetRestaurantsBasedOnFoodQuery({ foodname }, { skip: !foodname });
-  console.log({ data });
 
   return (
     <div className="w-full h-screen bg-surface">

@@ -69,7 +69,7 @@ export const CuisineRestaurants = () => {
               <div className="relative flex items-center bg-surface-grey p-4 rounded-xl w-full mx-auto">
                 <input
                   type="text"
-                  placeholder="Search for dishes"
+                  placeholder="Search for restaurants"
                   onChange={handleChange}
                   className="w-full bg-surface-grey outline-none text-text-30 placeholder-text-60"
                 />

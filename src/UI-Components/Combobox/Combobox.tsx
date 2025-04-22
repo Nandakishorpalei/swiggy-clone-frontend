@@ -40,14 +40,11 @@ export const Combobox = ({
       const selectedOption = options.find(
         (option) => option.value === defaultValue
       );
-      console.log({ options, defaultValue, selectedOption });
       setSelected(selectedOption?.value || defaultValue);
       setQuery(selectedOption?.label || "");
       onChange?.(selectedOption?.value || "");
     }
   }, [defaultValue]);
-
-  console.log(defaultValue, selected);
 
   return (
     <div className={classNames("relative", { "block w-full": props.block })}>

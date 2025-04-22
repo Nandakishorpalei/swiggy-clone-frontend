@@ -28,7 +28,6 @@ export const PaymentMethod = ({
 
   const handlePayment = async () => {
     const { order } = await createRazorpayOrder().unwrap();
-    console.log("Razorpay Order:", order);
 
     const options = {
       key: process.env.REACT_APP_RAZORPAY_KEY_ID,

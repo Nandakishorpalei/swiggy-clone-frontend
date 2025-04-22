@@ -33,7 +33,6 @@ export const Addons = ({ show, onClose, addon, onConfirm }: AddonsProps) => {
   };
 
   const handleConfirm = () => {
-    console.log("Selected Add-ons:", selectedAddons);
     onConfirm(selectedAddons);
     onClose();
   };

@@ -12,6 +12,7 @@ import { Order } from "../../store/model/Order";
 import { Button } from "../../UI-Components/Button/Button";
 import { useReorderItemsMutation } from "../../store/api/cart";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../Hooks/useToast";
 
 const commonURL = process.env.REACT_APP_RESTAURANTS_IMAGE_URL;
 
@@ -26,13 +27,14 @@ export const PastOrders = ({
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [reorder, { isLoading: isReordering }] = useReorderItemsMutation();
   const navigate = useNavigate();
+  const { alertToast } = useToast();
 
   const handleReorder = async (orderId: string) => {
     try {
       await reorder({ orderId: orderId }).unwrap();
       navigate("/checkout");
-    } catch (error) {
-      console.error("Error reordering items:", error);
+    } catch (error: any) {
+      alertToast({ message: error.message || "Something went wrong!" });
     }
   };
 
