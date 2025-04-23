@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
+import classNames from "classnames";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useGetCartItemsQuery } from "../../store/api/cart";
-import { RestaurantNavbar } from "../RestaurantNavbar/RestaurantNavbar";
 import Async from "../../UI-Components/Async/Async";
 import ErrorScreen from "../../UI-Components/ErrorScreen/ErrorScreen";
 import { OrangeButton } from "../../UI-Components/OrangeButton/OrangeButton";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { SavedAddress } from "./SavedAddress";
-import { PaymentMethod } from "./PaymentMethod/PaymentMethod";
+import { CheckoutShimmer } from "../../UI-Components/Shimmer/Shimmer";
+import { RestaurantNavbar } from "../RestaurantNavbar/RestaurantNavbar";
 import { CheckoutItems } from "./CheckoutItems/CheckoutItems";
-import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import classNames from "classnames";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { PaymentMethod } from "./PaymentMethod/PaymentMethod";
+import { SavedAddress } from "./SavedAddress";
 
 export const Checkout = () => {
   const { data, isLoading, isError, isSuccess } = useGetCartItemsQuery();
@@ -35,11 +34,12 @@ export const Checkout = () => {
     <div className="w-full h-screen bg-surface-grey overflow-auto">
       <RestaurantNavbar title="Checkout" />
       <Async.Root
-        isLoading={isLoading}
+        isLoading={isLoading || true}
         isSuccess={isSuccess}
         isError={isError}
         isEmpty={isEmpty}
         key="checkout"
+        renderOnLoad={<CheckoutShimmer />}
       >
         <Async.Empty>
           <div className="flex justify-center items-center flex-col h-[calc(100%-120px)]">
@@ -63,7 +63,7 @@ export const Checkout = () => {
           <ErrorScreen />
         </Async.ErrorHandler>
         <Async.Success>
-          <motion.div className="w-4/5 mx-auto flex p-6 gap-6">
+          <motion.div className="px-[10%] flex p-6 gap-6 ml-4">
             <div className="pl-4 relative flex-1 flex gap-6 flex-col h-fit">
               <div
                 className={classNames(

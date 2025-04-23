@@ -1,5 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import classNames from "classnames";
+import { motion } from "framer-motion";
 
 export const SmallShimmer = () => (
   <div className="h-6 animate-pulse bg-neutral-20 rounded-md py-2 w-2/5" />
@@ -141,4 +142,54 @@ export const MenuSearchShimmer = ({
       <SearchIcon className="text-text-30" />
     </div>
   </div>
+);
+
+export const SavedAddressCardShimmer = () => {
+  return (
+    <div className="p-5 w-full flex gap-2 border border-solid border-neutral-10 bg-white animate-pulse">
+      <div className="w-10 h-10 bg-neutral-20 rounded-full"></div>
+      <div className="flex flex-col justify-between w-full">
+        <div>
+          <div className="h-4 bg-neutral-20 rounded-md w-1/3 mb-2"></div>
+          <div className="h-3 bg-neutral-20 rounded-md w-2/3"></div>
+        </div>
+        <div>
+          <div className="h-4 bg-neutral-20 rounded-md w-1/4 mt-4 mb-2"></div>
+          <div className="h-8 bg-neutral-20 rounded-md w-1/3"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const CheckoutShimmer = () => (
+  <motion.div className="w-4/5 mx-auto mt-6 flex p-6 gap-6 h-[calc(100vh-120px)]">
+    <div className="flex gap-8 h-full w-full">
+      <div className="flex flex-col flex-1 h-full gap-6">
+        <div className="h-3/4 w-full bg-neutral-20 animate-pulse">
+          <div className="grid grid-cols-2 gap-6 p-6">
+            <SavedAddressCardShimmer />
+            <SavedAddressCardShimmer />
+            <SavedAddressCardShimmer />
+          </div>
+          <div className="grid grid-cols-2 gap-6 p-6">
+            <div className="h-12 bg-surface animate-pulse"></div>
+            <div className="h-12 bg-surface animate-pulse"></div>
+          </div>
+        </div>
+        <div className="flex-1 w-full bg-neutral-20 animate-pulse">
+          <div className="grid grid-cols-3 gap-6 p-6">
+            <div className="h-12 bg-surface animate-pulse"></div>
+            <div className="h-12 bg-surface animate-pulse"></div>
+            <div className="h-12 bg-surface animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+      <div className="w-1/3 h-full animate-pulse flex flex-col gap-4 bg-neutral-30 p-6">
+        <SavedAddressCardShimmer />
+        <SavedAddressCardShimmer />
+        <SavedAddressCardShimmer />
+      </div>
+    </div>
+  </motion.div>
 );

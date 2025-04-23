@@ -33,7 +33,7 @@ export const Help = () => {
     <div className="w-full h-screen bg-blue-80">
       <RestaurantNavbar title={`Help`} />
       <Async.Root
-        isLoading={isLoading || true}
+        isLoading={isLoading}
         isSuccess={isSuccess}
         isError={isError}
         isEmpty={false}
@@ -47,7 +47,7 @@ export const Help = () => {
           <ErrorScreen />
         </Async.ErrorHandler>
         <Async.Success>
-          <div className="w-4/5 pt-6 mx-auto mt-6 h-[calc(100vh-120px)]">
+          <div className="px-[10%] pt-6 mt-6 h-[calc(100vh-120px)]">
             <div className="text-surface text-h3 font-extrabold">
               Help & Support
             </div>

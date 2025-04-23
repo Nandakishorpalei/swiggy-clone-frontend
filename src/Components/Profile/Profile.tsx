@@ -28,7 +28,7 @@ export const Profile = () => {
     <div className="w-full h-screen bg-blue-80">
       <RestaurantNavbar title={`Help`} />
 
-      <div className="w-4/5 pt-6 mx-auto mt-6 h-[calc(100vh-120px)]">
+      <div className="pt-6 px-[10%] mt-6 h-[calc(100vh-120px)]">
         <div className="bg-surface p-6 mt-6 flex gap-8 h-[calc(100%-96px)]">
           <div className="flex flex-col bg-[#edf1f6] py-5 pl-5 min-w-[240px] max-w-[240px] h-full overflow-auto">
             {Object.values(ProfileTypeEnumMap).map((item) => (
