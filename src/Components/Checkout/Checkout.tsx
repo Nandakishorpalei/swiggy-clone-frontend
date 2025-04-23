@@ -34,7 +34,7 @@ export const Checkout = () => {
     <div className="w-full h-screen bg-surface-grey overflow-auto">
       <RestaurantNavbar title="Checkout" />
       <Async.Root
-        isLoading={isLoading || true}
+        isLoading={isLoading}
         isSuccess={isSuccess}
         isError={isError}
         isEmpty={isEmpty}
