@@ -3,7 +3,7 @@ import { SolidCheck } from "../../Icons/SolidCheck";
 import { useGetSavedAddressQuery } from "../../store/api/address";
 import { useGetCartItemsQuery } from "../../store/api/cart";
 import { Button } from "../../UI-Components/Button/Button";
-import { ShimmerLoader } from "../../UI-Components/Shimmer/Shimmer";
+import { AddressShimmerLoader } from "../../UI-Components/Shimmer/Shimmer";
 import { AddressSelector } from "../Address/AddressSelector";
 import { LocationAddIcon } from "./LocationAdd";
 import { SavedAddressCard } from "./SavedAddressCard";
@@ -35,7 +35,7 @@ export const SavedAddress = ({
   }, [cart?.selectedAddress]);
 
   if (isLoading) {
-    return <ShimmerLoader />;
+    return <AddressShimmerLoader />;
   }
 
   if (showSelectedAddress && selectedAddress) {

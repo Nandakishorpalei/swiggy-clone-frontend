@@ -1,18 +1,20 @@
-import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
 import { GreenStar } from "../../Icons/GreenStar";
 import { OneIcon } from "../../Icons/OneIcon";
 import { TopRestaurantResponse } from "../../store/model/Restaurants";
-import { useNavigate } from "react-router-dom";
 
 const commonURL = process.env.REACT_APP_RESTAURANTS_IMAGE_URL;
+
 export const RestaurantCard = ({
   restaurant,
   isFromTopRestaurants,
   size = "regular",
+  isLoading = false,
 }: {
   restaurant: TopRestaurantResponse;
   isFromTopRestaurants?: boolean;
   size?: "regular" | "small";
+  isLoading?: boolean;
 }) => {
   const { info } = restaurant;
   const navigate = useNavigate();

@@ -13,6 +13,10 @@ import { SmallEmptyScreen } from "../../UI-Components/EmptyScreen/SmallEmptyScre
 import { CartNotification } from "../CartNotification/CartNotification";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import {
+  DishCardShimmer,
+  MenuSearchShimmer,
+} from "../../UI-Components/Shimmer/Shimmer";
 
 export const RestaurantDishes = () => {
   const { restaurantid = "" } = useParams<{ restaurantid: string }>();
@@ -41,6 +45,23 @@ export const RestaurantDishes = () => {
         isError={isError}
         isEmpty={false}
         key="restaurantDishes"
+        renderOnLoad={
+          <div className="w-1/2 mx-auto mt-6 space-y-6">
+            <div className="w-1/3 bg-neutral-20 h-10 animate-pulse"></div>
+            <div className="h-32 w-full bg-neutral-20 animate-pulse"></div>
+            <MenuSearchShimmer blockSearch />
+            <motion.div className="flex flex-col gap-6">
+              {Array.from({ length: 4 }, (_, index) => (
+                <motion.div
+                  key={index}
+                  className="w-full border-b border-neutral-10 py-6"
+                >
+                  <DishCardShimmer />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        }
       >
         <Async.Empty>
           <></>

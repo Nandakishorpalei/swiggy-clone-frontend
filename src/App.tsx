@@ -38,70 +38,20 @@ function App() {
         <Login />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/city/:city"
-            element={
-              <ProtectedRoute>
-                <CityBasedRestaurants />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/food/:foodname"
-            element={
-              <ProtectedRoute>
-                <FoodBasedRestaurants />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/city/:city" element={<CityBasedRestaurants />} />
+          <Route path="/food/:foodname" element={<FoodBasedRestaurants />} />
           <Route
             path="/restaurant/:restaurantid"
-            element={
-              <ProtectedRoute>
-                <RestaurantDishes />
-              </ProtectedRoute>
-            }
+            element={<RestaurantDishes />}
           />
-          <Route
-            path="/restaurant"
-            element={
-              <ProtectedRoute>
-                <CityBasedRestaurants />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/restaurant" element={<CityBasedRestaurants />} />
           <Route
             path="/cuisine/:cuisinename"
-            element={
-              <ProtectedRoute>
-                <CuisineRestaurants />
-              </ProtectedRoute>
-            }
+            element={<CuisineRestaurants />}
           />
-          <Route
-            path="/checkout"
-            element={
-              <ProtectedRoute>
-                <Checkout />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/help"
-            element={
-              <ProtectedRoute>
-                <Help />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </LoadScript>

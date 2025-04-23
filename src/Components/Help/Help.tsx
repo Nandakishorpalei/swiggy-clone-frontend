@@ -11,6 +11,10 @@ import { PastOrders } from "./PastOrders";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import {
+  RestaurantShimmerLoader,
+  HelpSectionShimmer,
+} from "../../UI-Components/Shimmer/Shimmer";
 
 export const Help = () => {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
@@ -29,11 +33,12 @@ export const Help = () => {
     <div className="w-full h-screen bg-blue-80">
       <RestaurantNavbar title={`Help`} />
       <Async.Root
-        isLoading={isLoading}
+        isLoading={isLoading || true}
         isSuccess={isSuccess}
         isError={isError}
         isEmpty={false}
         key="help"
+        renderOnLoad={<HelpSectionShimmer />}
       >
         <Async.Empty>
           <div className="flex justify-center items-center flex-col">help</div>

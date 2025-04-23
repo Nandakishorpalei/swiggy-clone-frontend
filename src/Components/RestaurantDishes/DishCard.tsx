@@ -1,32 +1,33 @@
-import React, { useState } from "react";
-import { Dish } from "../../store/model/Dish";
-import { VegIcon } from "./VegIcon";
-import { NonVegIcon } from "./NonVegIcon";
-import { PriceTag } from "../../Icons/PriceTag";
-import { Button } from "../../UI-Components/Button/Button";
-import { MoreDishDetails } from "./MoreDishDetails";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { GreenStar } from "../../Icons/GreenStar";
 import classNames from "classnames";
-import { useAddItemToCartMutation } from "../../store/api/cart";
-import { Addons } from "./AddOns";
-import { AddonPayload } from "../../store/model/Cart";
-import { useToast } from "../../Hooks/useToast";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { QuantitySelector } from "./QuantitySelector";
-import { DifferentRestaurantPopup } from "../DifferentRestaurantPopup/DifferentRestaurantPopup";
-import { useQuery } from "../../Hooks/useQuery";
+import { useToast } from "../../Hooks/useToast";
+import { GreenStar } from "../../Icons/GreenStar";
+import { PriceTag } from "../../Icons/PriceTag";
+import { useAddItemToCartMutation } from "../../store/api/cart";
+import { AddonPayload } from "../../store/model/Cart";
+import { Dish } from "../../store/model/Dish";
 import { setShowLoginModal } from "../../store/slices/Auth";
+import { RootState } from "../../store/store";
+import { Button } from "../../UI-Components/Button/Button";
+import { DifferentRestaurantPopup } from "../DifferentRestaurantPopup/DifferentRestaurantPopup";
+import { Addons } from "./AddOns";
+import { MoreDishDetails } from "./MoreDishDetails";
+import { NonVegIcon } from "./NonVegIcon";
+import { QuantitySelector } from "./QuantitySelector";
+import { VegIcon } from "./VegIcon";
 
 const commonURL = process.env.REACT_APP_RESTAURANTS_IMAGE_URL;
 
 export const DishCard = ({
   dish,
   currentRestaurant,
+  isLoading = false,
 }: {
   dish: Dish;
   currentRestaurant: string;
+  isLoading?: boolean;
 }) => {
   const [addItemToCart] = useAddItemToCartMutation();
   const [showDetails, setShowDetails] = useState(false);

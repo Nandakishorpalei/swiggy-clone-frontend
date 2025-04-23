@@ -6,6 +6,10 @@ import { useGetRestaurantsBasedOnCuisineQuery } from "../../store/api/restaurant
 import Async from "../../UI-Components/Async/Async";
 import { SmallEmptyScreen } from "../../UI-Components/EmptyScreen/SmallEmptyScreen";
 import ErrorScreen from "../../UI-Components/ErrorScreen/ErrorScreen";
+import {
+  MenuSearchShimmer,
+  RestaurantCardShimmer,
+} from "../../UI-Components/Shimmer/Shimmer";
 import { debounce } from "../../utils/debounce";
 import { RestaurantNavbar } from "../RestaurantNavbar/RestaurantNavbar";
 import { RestaurantCard } from "../Restaurants/RestaurantCard";
@@ -37,6 +41,19 @@ export const CuisineRestaurants = () => {
         isError={isError}
         isEmpty={false}
         key="cuisineDishes"
+        renderOnLoad={
+          <div className="w-4/5 pt-6 mx-auto mt-0">
+            <div className="w-full h-96 pt-64 pl-12 bg-neutral-20 relative mb-12 animate-pulse"></div>
+            <MenuSearchShimmer />
+            <motion.div className="grid grid-cols-4 gap-6 mt-8">
+              {Array.from({ length: 12 }, (_, index) => (
+                <motion.div key={index} className="w-full">
+                  <RestaurantCardShimmer />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        }
       >
         <Async.Empty>
           <></>

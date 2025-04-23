@@ -1,8 +1,7 @@
-import React from "react";
-import { useGetAllRestaurantsQuery } from "../../store/api/restaurant";
-import Carousel from "../../UI-Components/Carousel/Carousel";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useGetAllRestaurantsQuery } from "../../store/api/restaurant";
+import Carousel from "../../UI-Components/Carousel/Carousel";
 
 const Offers = () => {
   const { data } = useGetAllRestaurantsQuery();

@@ -1,13 +1,13 @@
+import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import { RestaurantNavbar } from "../RestaurantNavbar/RestaurantNavbar";
 import { useGetRestaurantsBasedOnFoodQuery } from "../../store/api/restaurant";
 import Async from "../../UI-Components/Async/Async";
-import ErrorScreen from "../../UI-Components/ErrorScreen/ErrorScreen";
-import { capitalizeWords } from "../../utils/capitalize";
 import { EmptyScreen } from "../../UI-Components/EmptyScreen/EmptyScreen";
-import { motion } from "framer-motion";
+import ErrorScreen from "../../UI-Components/ErrorScreen/ErrorScreen";
+import { RestaurantCardShimmer } from "../../UI-Components/Shimmer/Shimmer";
+import { capitalizeWords } from "../../utils/capitalize";
+import { RestaurantNavbar } from "../RestaurantNavbar/RestaurantNavbar";
 import { RestaurantCard } from "./RestaurantCard";
-import { useEffect } from "react";
 
 export const FoodBasedRestaurants = () => {
   const { foodname = "" } = useParams<{ foodname: string }>();
@@ -23,6 +23,15 @@ export const FoodBasedRestaurants = () => {
         isError={isError}
         isEmpty={isSuccess && !data?.data?.allRestaurants.length}
         key="foodBasedRestaurants"
+        renderOnLoad={
+          <motion.div className="pl-2 grid grid-cols-4 gap-6 m-6">
+            {Array.from({ length: 12 }, (_, index) => (
+              <motion.div key={index} className="w-full">
+                <RestaurantCardShimmer />
+              </motion.div>
+            ))}
+          </motion.div>
+        }
       >
         <Async.Empty>
           <EmptyScreen />

@@ -1,12 +1,13 @@
+import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import Offers from "./Offers";
-import { RestaurantNavbar } from "../RestaurantNavbar/RestaurantNavbar";
-import { TopRestaurants } from "./TopRestaurants";
 import { useGetAllRestaurantsQuery } from "../../store/api/restaurant";
 import Async from "../../UI-Components/Async/Async";
 import ErrorScreen from "../../UI-Components/ErrorScreen/ErrorScreen";
-import { motion } from "framer-motion";
+import { RestaurantCardShimmer } from "../../UI-Components/Shimmer/Shimmer";
+import { RestaurantNavbar } from "../RestaurantNavbar/RestaurantNavbar";
+import Offers from "./Offers";
 import { RestaurantCard } from "./RestaurantCard";
+import { TopRestaurants } from "./TopRestaurants";
 
 export const CityBasedRestaurants = () => {
   const { city = "" } = useParams<{ city: string }>();
@@ -27,6 +28,22 @@ export const CityBasedRestaurants = () => {
         isError={isError}
         isEmpty={false}
         key="cityBasedRestaurants"
+        renderOnLoad={
+          <div className="pt-6 w-4/5 mx-auto space-y-8">
+            {Array.from({ length: 2 }, (_, index) => (
+              <div className="w-full mx-auto" key={index}>
+                <div className="h-12 animate-pulse w-1/4 bg-neutral-20 mb-6"></div>
+                <motion.div className="flex justify-between gap-6">
+                  {Array.from({ length: 4 }, (_, index) => (
+                    <motion.div key={index} className="w-full">
+                      <RestaurantCardShimmer />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        }
       >
         <Async.Empty>
           <></>
