@@ -99,7 +99,7 @@ export const FoodsCarousel = () => {
             <motion.div
               key={image.name}
               onClick={() => navigate("/food/" + image.name)}
-              className="w-[144px] h-[180px] flex-shrink-0 rounded-lg"
+              className="w-[144px] h-[180px] flex-shrink-0 rounded-lg cursor-pointer"
             >
               <img
                 src={image.url}
@@ -114,7 +114,7 @@ export const FoodsCarousel = () => {
             <motion.div
               key={image.name}
               onClick={() => navigate("/food/" + image.name)}
-              className="w-[144px] h-[180px] flex-shrink-0 rounded-lg"
+              className="w-[144px] h-[180px] flex-shrink-0 rounded-lg cursor-pointer"
             >
               <img
                 src={image.url}
